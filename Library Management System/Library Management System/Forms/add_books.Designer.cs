@@ -91,6 +91,7 @@
 			this.textBoxQuantity.Name = "textBoxQuantity";
 			this.textBoxQuantity.Size = new System.Drawing.Size(194, 20);
 			this.textBoxQuantity.TabIndex = 4;
+			this.textBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQuantity_KeyPress);
 			// 
 			// label4
 			// 
@@ -107,6 +108,7 @@
 			this.textBoxPrice.Name = "textBoxPrice";
 			this.textBoxPrice.Size = new System.Drawing.Size(194, 20);
 			this.textBoxPrice.TabIndex = 6;
+			this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
 			// 
 			// label5
 			// 

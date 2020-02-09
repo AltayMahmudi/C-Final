@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace Library_Management_System.Forms
@@ -44,8 +43,31 @@ namespace Library_Management_System.Forms
 
         }
 
- 
+        private void textBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
 
-        
+            char ch = e.KeyChar;
+
+            if (ch == 46 && textBoxPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            char ch = e.KeyChar;
+
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
