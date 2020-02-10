@@ -8,38 +8,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Library_Management_System.Services;
+using Library_Management_System.Models;
 
 namespace Library_Management_System.Forms
 {
     public partial class add_books : Form
     {
-        SqlConnection con = new SqlConnection(Properties.Settings.Default.LibManagementSysConnectionString);
+        private readonly BookService _bookService;
         public add_books()
         {
+            _bookService = new BookService();
             InitializeComponent();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            string constring = (Properties.Settings.Default.LibManagementSysConnectionString);
-            string Query = "insert into BookInfo (BookName,BookAuthor,BookPublicationName,BookPurchaseDate,BookPrice,BookQuantity )" + "values('" + this.textBoxBookName.Text + "','" + this.textBoxAuthor.Text + "','" + this.textBoxPublication.Text + "','" + this.dateTimePickerBook.Text + "','" + this.textBoxPrice.Text + "','" + this.textBoxQuantity.Text + "') ;";
-            SqlConnection conDatabase = new SqlConnection(constring);
-            SqlCommand CmdDatabase = new SqlCommand(Query, conDatabase);
-            SqlDataReader reader;
-            try
+            if (string.IsNullOrEmpty(textBoxBookName.Name))
             {
-                conDatabase.Open();
-                reader = CmdDatabase.ExecuteReader();
-                MessageBox.Show("Book Saved");
-                while (reader.Read())
-                {
+                MessageBox.Show("Insert Book Name");
+                return;
+            }
+            BookInfo book = new BookInfo();
+            book.BookName = textBoxBookName.Text;
+            book.BookAuthor = textBoxAuthor.Text;
+            book.BookPublicationName = textBoxPublication.Text;
+            book.BookPurchaseDate =DateTime.Parse(dateTimePickerBook.Text);
+            book.BookPrice = textBoxPrice.Text;
+            book.BookQuantity = int.Parse(textBoxQuantity.Text);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            _bookService.insert(book);
 
         }
 
@@ -69,5 +67,12 @@ namespace Library_Management_System.Forms
                 e.Handled = true;
             }
         }
+
+        private void add_books_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(Properties.Settings.Default.LibManagementSysConnectionString);
+        }
+
+   
     }
 }

@@ -175,6 +175,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "add_books";
 			this.Text = "Add Books";
+			this.Load += new System.EventHandler(this.add_books_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
