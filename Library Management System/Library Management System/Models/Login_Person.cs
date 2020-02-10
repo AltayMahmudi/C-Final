@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 namespace Library_Management_System.Models
 {
 
-    class Login_Person
+    public class Login_Person
     {
         public int İd { get; set; }
         public int Username { get; set; }
 
         public string Password { get; set; }
 
+		public int BookInfoId { get; set; }
 
-
-    }
+		public BookInfo BookInfo { get; set; }
+	}
 }

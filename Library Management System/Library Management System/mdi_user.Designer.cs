@@ -32,10 +32,10 @@
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.booksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.addNewBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.viewBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip.SuspendLayout();
 			this.statusStrip.SuspendLayout();
 			this.SuspendLayout();
@@ -62,9 +62,15 @@
 			// addNewBookToolStripMenuItem
 			// 
 			this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
-			this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.addNewBookToolStripMenuItem.Text = "Add New Book";
 			this.addNewBookToolStripMenuItem.Click += new System.EventHandler(this.addNewBookToolStripMenuItem_Click);
+			// 
+			// viewBooksToolStripMenuItem
+			// 
+			this.viewBooksToolStripMenuItem.Name = "viewBooksToolStripMenuItem";
+			this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+			this.viewBooksToolStripMenuItem.Text = "View Books";
 			// 
 			// statusStrip
 			// 
@@ -82,12 +88,6 @@
 			this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
 			this.toolStripStatusLabel.Text = "Status";
 			// 
-			// viewBooksToolStripMenuItem
-			// 
-			this.viewBooksToolStripMenuItem.Name = "viewBooksToolStripMenuItem";
-			this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.viewBooksToolStripMenuItem.Text = "View Books";
-			// 
 			// mdi_user
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +100,7 @@
 			this.Name = "mdi_user";
 			this.Text = "mdi_user";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.Load += new System.EventHandler(this.Mdi_user_Load);
 			this.menuStrip.ResumeLayout(false);
 			this.menuStrip.PerformLayout();
 			this.statusStrip.ResumeLayout(false);

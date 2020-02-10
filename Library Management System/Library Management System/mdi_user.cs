@@ -104,8 +104,11 @@ namespace Library_Management_System
             ab.Show();
         }
 
- 
-    }
+		private void Mdi_user_Load(object sender, EventArgs e)
+		{
+
+		}
+	}
 
   
 }

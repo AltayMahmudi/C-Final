@@ -8,17 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Library_Management_System.Services;
+using Library_Management_System.Data;
 using Library_Management_System.Models;
+
 
 namespace Library_Management_System.Forms
 {
     public partial class add_books : Form
     {
-        private readonly BookService _bookService;
+		private readonly LibraryDbContext _context;
         public add_books()
         {
-            _bookService = new BookService();
+
+			_context = new LibraryDbContext();
+
             InitializeComponent();
         }
 
@@ -37,8 +40,8 @@ namespace Library_Management_System.Forms
             book.BookPrice = textBoxPrice.Text;
             book.BookQuantity = int.Parse(textBoxQuantity.Text);
 
-            _bookService.insert(book);
-
+			_context.Books.Add(book);
+			_context.SaveChanges();
         }
 
         private void textBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
